@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Advanced Product Page Clone</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#eaeded;
+}
+
+/* HEADER */
+.header{
+    background:#131921;
+    color:white;
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#ff9900;
+}
+
+.search-box{
+    flex:1;
+    margin:0 20px;
+    display:flex;
+}
+
+.search-box input{
+    width:100%;
+    padding:8px;
+    border:none;
+    outline:none;
+}
+
+.search-box button{
+    padding:8px 15px;
+    border:none;
+    background:#febd69;
+    cursor:pointer;
+}
+
+.cart{
+    position:relative;
+    cursor:pointer;
+}
+
+.cart-count{
+    position:absolute;
+    top:-8px;
+    right:-10px;
+    background:red;
+    color:white;
+    border-radius:50%;
+    padding:3px 7px;
+    font-size:12px;
+}
+
+/* PRODUCT SECTION */
+.container{
+    display:flex;
+    gap:30px;
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:5px;
+}
+
+/* IMAGES */
+.images{
+    width:40%;
+}
+
+.main-image{
+    width:100%;
+    border:1px solid #ddd;
+    padding:10px;
+    border-radius:5px;
+}
+
+.thumbnails{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+}
+
+.thumbnails img{
+    width:60px;
+    cursor:pointer;
+    border:1px solid #ddd;
+    padding:5px;
+    border-radius:5px;
+}
+
+.thumbnails img:hover{
+    border:2px solid #ff9900;
+}
+
+/* DETAILS */
+.details{
+    width:35%;
+}
+
+.title{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.rating{
+    color:#ff9900;
+    margin-bottom:10px;
+}
+
+.price{
+    font-size:26px;
+    color:#b12704;
+    margin:10px 0;
+}
+
+.offer{
+    background:#cc0c39;
+    color:white;
+    padding:5px 10px;
+    display:inline-block;
+    margin-bottom:10px;
+}
+
+.features{
+    margin-top:10px;
+}
+
+.features ul{
+    margin-left:20px;
+}
+
+/* BUY BOX */
+.buy-box{
+    width:25%;
+    border:1px solid #ddd;
+    padding:15px;
+    border-radius:5px;
+    height:fit-content;
+}
+
+.qty{
+    margin:10px 0;
+}
+
+.buy-box select{
+    padding:5px;
+    width:100%;
+}
+
+.buy-box button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add{
+    background:#ffd814;
+}
+
+.buy{
+    background:#ffa41c;
+}
+
+.tabs{
+    margin:20px;
+    background:white;
+    padding:20px;
+    border-radius:5px;
+}
+
+.tab-buttons button{
+    padding:10px 15px;
+    border:none;
+    cursor:pointer;
+    background:#f3f3f3;
+    margin-right:5px;
+}
+
+.tab-buttons button.active{
+    background:#ff9900;
+    color:white;
+}
+
+.tab-content{
+    margin-top:15px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .container{
+        flex-direction:column;
+    }
+    .images,.details,.buy-box{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">amazon.in</div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search Amazon">
+        <button>Search</button>
+    </div>
+
+    <div class="cart">
+        🛒 Cart
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+</div>
+
+<!-- PRODUCT -->
+<div class="container">
+
+    <div class="images">
+        <img id="mainImg" class="main-image"
+        src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1500_.jpg">
+
+        <div class="thumbnails">
+            <img src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1500_.jpg" onclick="changeImage(this)">
+            <img src="https://m.media-amazon.com/images/I/61-r9zOKBCL._SL1500_.jpg" onclick="changeImage(this)">
+            <img src="https://m.media-amazon.com/images/I/61VuVU94RnL._SL1500_.jpg" onclick="changeImage(this)">
+        </div>
+    </div>
+
+    <div class="details">
+        <div class="title">Apple iPhone 14 (128 GB) - Midnight</div>
+        <div class="rating">★★★★★ 4.6 out of 5</div>
+        <div class="offer">Limited Time Deal</div>
+        <div class="price">₹59,999</div>
+
+        <div class="features">
+            <h4>About this item</h4>
+            <ul>
+                <li>6.1-inch Super Retina XDR display</li>
+                <li>A15 Bionic chip</li>
+                <li>Advanced dual-camera system</li>
+                <li>All-day battery life</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="buy-box">
+        <h3>Buy Now</h3>
+        <div class="price">₹59,999</div>
+
+        <div class="qty">
+            Quantity:
+            <select id="quantity">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+        </div>
+
+        <button class="add" onclick="addToCart()">Add to Cart</button>
+        <button class="buy" onclick="buyNow()">Buy Now</button>
+
+        <p id="msg" style="margin-top:10px;color:green;"></p>
+    </div>
+
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+    <div class="tab-buttons">
+        <button class="active" onclick="showTab('desc', this)">Description</button>
+        <button onclick="showTab('spec', this)">Specifications</button>
+        <button onclick="showTab('review', this)">Reviews</button>
+    </div>
+
+    <div class="tab-content" id="tabContent">
+        High-quality smartphone with advanced camera and performance.
+    </div>
+</div>
+
+<script>
+let cart = 0;
+
+function changeImage(img){
+    document.getElementById("mainImg").src = img.src;
+}
+
+function addToCart(){
+    let qty = parseInt(document.getElementById("quantity").value);
+    cart += qty;
+    document.getElementById("cartCount").innerText = cart;
+    document.getElementById("msg").innerText = "Added to cart successfully!";
+}
+
+function buyNow(){
+    document.getElementById("msg").innerText = "Redirecting to secure checkout...";
+}
+
+function showTab(type, element){
+    let content = document.getElementById("tabContent");
+    let buttons = document.querySelectorAll(".tab-buttons button");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    element.classList.add("active");
+
+    if(type === "desc"){
+        content.innerText = "High-quality smartphone with advanced camera and powerful performance.";
+    }
+    else if(type === "spec"){
+        content.innerText = "128GB Storage | 6GB RAM | iOS | 6.1 inch Display | 5G Supported";
+    }
+    else{
+        content.innerText = "⭐⭐⭐⭐⭐ Amazing product! Worth buying.";
+    }
+}
+</script>
+
+</body>
+</html>
